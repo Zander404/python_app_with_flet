@@ -15,7 +15,8 @@ def main(page: ft.Page):
 
     # Controle da Janela
     page.title = "Estoque = Generico"
-    lista_produtos = ft.ListView(expand=1, spacing=10, padding=20, auto_scroll=False)
+    lista_produtos = ft.ListView(
+        expand=1, spacing=10, padding=20, auto_scroll=False)
 
     # Acoes
     def cadastrar(e):
@@ -32,19 +33,19 @@ def main(page: ft.Page):
                              margin=3,
                              border_radius=10
                              ))
-            
+
             print("Produto salvo com sucesso!")
             produto.value = ""
             preco.value = ""
-            txt_erro.visible=False
-            txt_acerto.visible=True
+            txt_erro.visible = False
+            txt_acerto.visible = True
 
         except:
             print("Operação Inválida!")
             produto.on_blur = True
             preco.color = ft.colors.RED
-            txt_acerto.visible=False
-            txt_erro.visible=True
+            txt_acerto.visible = False
+            txt_erro.visible = True
 
         finally:
             page.update()
@@ -59,10 +60,11 @@ def main(page: ft.Page):
 
     btn_produto = ft.TextButton(text="Sim", on_click=cadastrar)
 
-
     # MESSAGENS DO SISTEMA
-    txt_acerto = ft.Container(ft.Text("Produto salvo com Sucesso!"), visible=False, bgcolor=ft.colors.GREEN, padding=10, alignment=ft.alignment.center)
-    txt_erro = ft.Container(ft.Text("Erro ao salvar o Produto!"), visible=False, bgcolor=ft.colors.RED, padding=10, alignment=ft.alignment.center)
+    txt_acerto = ft.Container(ft.Text("Produto salvo com Sucesso!"), visible=False,
+                              bgcolor=ft.colors.GREEN, padding=10, alignment=ft.alignment.center)
+    txt_erro = ft.Container(ft.Text("Erro ao salvar o Produto!"), visible=False,
+                            bgcolor=ft.colors.RED, padding=10, alignment=ft.alignment.center)
 
     # Componentes Staticos
     page.add(
